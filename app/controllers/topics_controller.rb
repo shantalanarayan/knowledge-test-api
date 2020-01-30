@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TopicsController < ApplicationController
+class TopicsController < ProtectedController
   before_action :set_topic, only: %i[show update destroy]
 
   # GET /topics
