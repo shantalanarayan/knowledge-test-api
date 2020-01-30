@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TopicsController < ProtectedController
+class TopicsController < OpenReadController
   before_action :set_topic, only: %i[show update destroy]
 
   # GET /topics
@@ -17,7 +17,7 @@ class TopicsController < ProtectedController
 
   # POST /topics
   def create
-    @topic = Topic.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
 
     if @topic.save
       render json: @topic, status: :created, location: @topic
@@ -44,7 +44,7 @@ class TopicsController < ProtectedController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_topic
-    @topic = Topic.find(params[:id])
+    @topic = current_user.topics.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

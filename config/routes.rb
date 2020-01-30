@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :topics
+  resources :ques
+  resources :quests
+  resources :questions
+  # resources :topics
   # RESTful routes
   resources :examples, except: %i[new edit]
   resources :topics, except: %i[new edit]
