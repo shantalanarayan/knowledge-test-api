@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class TopicsController < OpenReadController
+class TopicsController < ProtectedController
   before_action :set_topic, only: %i[show update destroy]
+  skip_before_action :authenticate, only: %i[index]
 
   # GET /topics
   def index
