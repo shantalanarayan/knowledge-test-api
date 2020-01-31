@@ -2,5 +2,5 @@
 
 class Topic < ApplicationRecord
   belongs_to :user
-  validates :title, :user, presence: true
+  validates :title, :question, :answer, :user, presence: true
 end

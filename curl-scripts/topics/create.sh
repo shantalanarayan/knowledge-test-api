@@ -7,7 +7,9 @@ curl "http://localhost:4741/topics" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
     "topic": {
-      "title": "'"${TITLE}"'"
+      "title": "'"${TITLE}"'",
+      "question": "'"${QUESTION}"'",
+      "answer": "'"${ANSWER}"'"
     }
   }'
 

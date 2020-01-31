@@ -50,6 +50,6 @@ class TopicsController < ProtectedController
 
   # Only allow a trusted parameter "white list" through.
   def topic_params
-    params.require(:topic).permit(:title)
+    params.require(:topic).permit(:title, :question, :answer)
   end
 end
