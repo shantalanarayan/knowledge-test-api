@@ -5,7 +5,7 @@ class TopicsController < ProtectedController
 
   # GET /topics
   def index
-    @topics = Topic.all
+    @topics = current_user.topics
 
     render json: @topics
   end
