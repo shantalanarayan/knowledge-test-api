@@ -7,7 +7,7 @@ class UsersController < ProtectedController
   def signup
     user = User.create(user_creds)
     if user.valid?
-      render json: user, status: :created
+      render json: user, serializer: UserLoginSerializer, root: 'user', status: :created
     else
       render json: user.errors, status: :bad_request
     end
