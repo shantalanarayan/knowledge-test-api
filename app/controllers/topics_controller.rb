@@ -5,9 +5,9 @@ class TopicsController < ProtectedController
 
   # GET /topics
   def index
-    @topics = current_user.topics
+    @topics = current_user.topics.sort_by { |t| [t.id] }
 
-    render json: @topics
+    render json: @topics, root: 'topics'
   end
 
   # GET /topics/1
