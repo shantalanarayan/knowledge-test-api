@@ -36,10 +36,13 @@ All data returned from API actions is formatted as JSON.
 * Instructor directed to implement application with minimal resources for brevity of time.
 * Once the project was finalized, created below entity diagram and got it approved by instructor.
 
-## Development process and problem solving strategies
+## Development process
  * Created resources using scaffolding
  * Added the table and column using db:migration.
  * Created curl scripts to test api endpoints locally during development.
+
+## Problem solving strategies
+ * During development of frontend application, I wanted to enable auto-signin on sign-up. One way to do this was to call sign-in api immediately on successful sign-up. However, that meant it will take 2 api calls to accomplish auto sign-in on sign-up. The reason, i couldn't use json object returned during signup was that it was missing a token. Hence, I updated the user controller's sign-up action to return `UserLoginSerializer` on successful signup. `UserLoginSerializer` generates token when returning the JSON object to the caller. 
  * During frontend implementation, I realized that the index action is returning all topics in the database. However, I needed only the ones that belonged to the logged in user. Hence, I researched on how to implement that and later stumbled upon a code that specified `current_user.examples` and just out of curiosity replaced `Topics.all` with `current_user.topics` and tested the change in behavior with that code. Post that change, only topics related to current user is being returned.
  * Similarly, during front end development, i realized on update of a topic when I refresh the topics list, the updated topic loses its position and ends up at the end of the list. This created a bad user experience. After a little research, I figured that it would be easier to return a sorted list from backend thus not requiring me to sorting it in the frontend. I updated index action on topics controller to return topics sorted by title first and then it's id.
 
